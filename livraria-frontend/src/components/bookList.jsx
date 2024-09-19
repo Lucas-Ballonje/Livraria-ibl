@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -31,6 +32,11 @@ const BookList = ({ onEdit, onDelete }) => {
       </ul>
     </div>
   );
+};
+
+BookList.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default BookList;
