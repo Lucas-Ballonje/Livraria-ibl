@@ -2,6 +2,8 @@
 * PHP 8.2 ou superior
 * MySql 8 ou superior
 * Composer
+* Xampp
+* Node 20.11.1
 
 
 ## Como rodar o projeto
@@ -17,7 +19,28 @@ No arquivo .env, configure as informações do banco de dados:
     DB_PASSWORD=sua_senha
 ```
 
-### Testar a API
+* Para prosseguir baixe o xampp e inicie nele APENAS o apache e o mysql
+
+Prosseguindo entre na pasta livraria - ibl e inicie o servidor php com
+
+```
+php artisan serve
+```
+
+Em seguida não esqueça de entrar pasta livraria - frontend e dar o seguinte comando
+```
+npm install
+```
+
+Para ter a visualização do front na mesma pasta inicie com: 
+
+```
+npm run dev
+```
+
+
+
+### Testar a API com insomnia
 
 GET /api/books Retorna todos os livros.
 
