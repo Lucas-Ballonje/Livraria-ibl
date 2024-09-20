@@ -19,6 +19,19 @@ No arquivo .env, configure as informações do banco de dados:
     DB_PASSWORD=sua_senha
 ```
 
+Gere a chave da aplicação com: 
+
+```
+php artisan key:generate
+```
+
+Em seguida crie um modelo chamado book para a aplicação
+
+```
+php artisan make:model Book -m
+```
+
+
 * Para prosseguir baixe o xampp e inicie nele APENAS o apache e o mysql
 
 Prosseguindo entre na pasta livraria - ibl e inicie o servidor php com
