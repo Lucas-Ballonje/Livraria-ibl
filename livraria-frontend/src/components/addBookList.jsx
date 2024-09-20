@@ -1,7 +1,8 @@
+import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 
-const AddBook = ({ onBookAdded }) => {
+export const AddBook = ({ onBookAdded }) => {
   const [book, setBook] = useState({
     title: '',
     author: '',
@@ -34,15 +35,16 @@ const AddBook = ({ onBookAdded }) => {
   };
 
   return (
-    <div>
-      <h2>Adicionar Livro</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="p-8">
+      <h2 className="text-2xl font-bold mb-4">Adicionar Livro</h2>
+      <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg space-y-4">
         <input
           type="text"
           name="title"
           placeholder="Título"
           value={book.title}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
@@ -50,6 +52,7 @@ const AddBook = ({ onBookAdded }) => {
           placeholder="Autor"
           value={book.author}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
@@ -57,6 +60,7 @@ const AddBook = ({ onBookAdded }) => {
           placeholder="ISBN"
           value={book.isbn}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="number"
@@ -64,6 +68,7 @@ const AddBook = ({ onBookAdded }) => {
           placeholder="Quantidade de Páginas"
           value={book.pages}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
@@ -71,6 +76,7 @@ const AddBook = ({ onBookAdded }) => {
           placeholder="Edição"
           value={book.edition}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
@@ -78,11 +84,15 @@ const AddBook = ({ onBookAdded }) => {
           placeholder="Editora"
           value={book.publisher}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
-        <button type="submit">Adicionar</button>
+        <button
+          type="submit"
+          className="bg-green-500 text-white px-4 py-2 rounded w-full"
+        >
+          Adicionar Livro
+        </button>
       </form>
     </div>
   );
 };
-
-export default AddBook;

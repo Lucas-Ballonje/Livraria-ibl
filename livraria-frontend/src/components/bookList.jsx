@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const BookList = ({ onEdit, onDelete }) => {
+export const BookList = ({ onEdit, onDelete }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -19,24 +18,34 @@ const BookList = ({ onEdit, onDelete }) => {
   };
 
   return (
-    <div>
-      <h2>Lista de Livros</h2>
-      <ul>
+    <div className="p-8">
+      <h2 className="text-2xl font-bold mb-4">Lista de Livros</h2>
+      <ul className="space-y-4">
         {books.map((book) => (
-          <li key={book.id}>
-            {book.title} - {book.author}
-            <button onClick={() => onEdit(book)}>Editar</button>
-            <button onClick={() => onDelete(book.id)}>Deletar</button>
+          <li key={book.id} className="bg-gray-100 p-4 rounded-lg flex justify-between items-center">
+            <div className='flex flex-col gap-4'>
+              <strong><strong>Titulo:</strong> {book.title}</strong>
+              <span><strong>Autor:</strong> {book.author}</span>
+              <span><strong>Edição</strong> {book.edition}ª</span> 
+              <span><strong>Editora:</strong> {book.publisher}</span>
+            </div>
+            <div className="space-x-2">
+              <button
+                className="bg-blue-500 text-white px-3 py-1 rounded"
+                onClick={() => onEdit(book)}
+              >
+                Editar
+              </button>
+              <button
+                className="bg-red-500 text-white px-3 py-1 rounded"
+                onClick={() => onDelete(book.id)}
+              >
+                Deletar
+              </button>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 };
-
-BookList.propTypes = {
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
-
-export default BookList;

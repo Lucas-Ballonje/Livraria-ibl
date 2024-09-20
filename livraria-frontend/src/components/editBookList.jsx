@@ -1,78 +1,82 @@
-// src/components/EditBook.js
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const EditBook = ({ bookToEdit, onBookUpdated }) => {
-  const [book, setBook] = useState(bookToEdit);
-
-  useEffect(() => {
-    setBook(bookToEdit);
-  }, [bookToEdit]);
+export const EditBook = ({ book, onBookUpdated }) => {
+  const [updatedBook, setUpdatedBook] = useState(book);
 
   const handleInputChange = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
+    setUpdatedBook({ ...updatedBook, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://127.0.0.1:8000/api/books/${book.id}`, book);
+      await axios.put(`http://127.0.0.1:8000/api/books/${book.id}`, updatedBook);
       onBookUpdated();
     } catch (error) {
-      console.error('Erro ao editar livro:', error);
+      console.error('Erro ao atualizar livro:', error);
     }
   };
 
   return (
-    <div>
-      <h2>Editar Livro</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="p-8">
+      <h2 className="text-2xl font-bold mb-4">Editar Livro</h2>
+      <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg space-y-4">
         <input
           type="text"
           name="title"
           placeholder="Título"
-          value={book.title}
+          value={updatedBook.title}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           name="author"
           placeholder="Autor"
-          value={book.author}
+          value={updatedBook.author}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           name="isbn"
           placeholder="ISBN"
-          value={book.isbn}
+          value={updatedBook.isbn}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="number"
           name="pages"
           placeholder="Quantidade de Páginas"
-          value={book.pages}
+          value={updatedBook.pages}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           name="edition"
           placeholder="Edição"
-          value={book.edition}
+          value={updatedBook.edition}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           name="publisher"
           placeholder="Editora"
-          value={book.publisher}
+          value={updatedBook.publisher}
           onChange={handleInputChange}
+          className="w-full p-2 border border-gray-300 rounded"
         />
-        <button type="submit">Salvar</button>
+        <button
+          type="submit"
+          className="bg-yellow-500 text-white px-4 py-2 rounded w-full"
+        >
+          Atualizar Livro
+        </button>
       </form>
     </div>
   );
 };
-
-export default EditBook;

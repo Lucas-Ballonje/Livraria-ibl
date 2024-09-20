@@ -1,8 +1,7 @@
-// src/App.js
 import { useState } from 'react';
-import BookList from "./components/bookList"
-import AddBook from "./components/AddBook";
-import EditBook from './components/EditBook';
+import { BookList } from "./components/bookList";
+import { AddBook } from "./components/addBookList";
+import { EditBook } from "./components/editBookList";
 import axios from 'axios';
 
 function App() {
@@ -32,9 +31,9 @@ function App() {
 
   return (
     <div>
-      <h1>API de Livros - Frontend</h1>
+      <h1 className='text-center text-2xl font-bold my-4'>API de Livros - Frontend</h1>
       {editingBook ? (
-        <EditBook bookToEdit={editingBook} onBookUpdated={handleBookUpdated} />
+        <EditBook book={editingBook} onBookUpdated={handleBookUpdated} />
       ) : (
         <AddBook onBookAdded={handleBookAdded} />
       )}
