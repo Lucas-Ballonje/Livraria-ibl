@@ -8,7 +8,7 @@
 
 ## Como rodar o projeto
 
-No arquivo .env, configure as informações do banco de dados:
+Entre na pasta livraria - ibl no arquivo .env, configure as informações do banco de dados:
 
 ```
     DB_CONNECTION=mysql
@@ -34,7 +34,7 @@ php artisan make:model Book -m
 
 * Para prosseguir baixe o xampp e inicie nele APENAS o apache e o mysql
 
-Prosseguindo entre na pasta livraria - ibl e inicie o servidor php com
+Prosseguindo utilize o código abaixo para iniciar o servidor
 
 ```
 php artisan serve
